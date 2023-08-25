@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: rgb(50, 100, 385);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .converter {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background: rgb(50, 100, 149);
+    box-shadow: 10px 3px 10px rgba(0, 14, 7, 0.212);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  h2{
+    text-shadow:  1px 3px 10px rgba(0, 14, 7, 0.212);
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+  }
+  input{
+    height: 20px;
+    padding: 5px;
+    font-size: 15px;
+    border-color: transparent;
+    border-radius: 5px;
+  }
+p{
+  width: 183px;
+  background: #ffffff;
+  height: 22px;
+  text-align: left;
+    padding: 5px;
+    padding-top: 6px;
+    font-size: 15px;
+    margin-right: 10px;
+    border-color: transparent;
+    border-radius: 5px;
+}
+select{
+  height: 30px; 
+  width: 90px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+span{
+  margin-top:20px ;
+}
+.d2{
+  display: flex;
+}
+button{
+  height: 35px;
+  width: 150px;
+  font-size: 20px;
+  font-family:  sans-serif;
+  border-radius: 10px;
+  border-color: transparent;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  box-shadow: 10px 3px 10px rgba(0, 14, 7, 0.212);
+}
+  </style>
+  
+  <title>CURRENCY CONVERTER</title>
+</head>
+<body>
+  <div class="converter">
+    <h2>CURRENCY CONVERTER</h2>
+<div class="d1">
+    <input type="number" id="inputCurr" placeholder="Enter Currency">
+    <select id="fromUnit">
+      <option value="dollar">Dollar</option>
+      <option value="INR">INR</option>
+      <option value="pound">pound</option>
+      <option value="taka">Taka</option>
+      <option value="yen">Yen</option>
+    </select>
+  </div>
+    <span>to</span>
+    <div class="d2">
+    <p id="result"></p>
+    <select id="toUnit">
+      <option value="dollar">Dollar</option>
+      <option value="INR">INR</option>
+      <option value="pound">Pound</option>
+      <option value="taka">Taka</option>
+      <option value="yen">Yen</option>
+    </select>
+  </div>
+    <button id="convertBtn">Convert</button>
+   
+  </div>
+  <script>
+    document.getElementById('convertBtn').addEventListener('click', convertCurrency);
+
+function convertCurrency() {
+  const inputCurr = parseFloat(document.getElementById('inputCurr').value);
+  const fromUnit = document.getElementById('fromUnit').value;
+  const toUnit = document.getElementById('toUnit').value;
+
+  let result;
+
+  if (fromUnit === 'dollar' && toUnit === 'INR') {
+    result = (inputCurr *82.67);
+  } else if (fromUnit === 'INR' && toUnit === 'dollar') {
+    result = (inputCurr *0.012);
+  } else if (fromUnit === 'pound' && toUnit === 'INR') {
+    result = (inputCurr *103.90);
+  } else if (fromUnit === 'INR' && toUnit === 'pound') {
+    result = (inputCurr *0.0096);
+  } else if (fromUnit === 'pound' && toUnit === 'dollar') {
+    result = (inputCurr *1.26);
+  } else if (fromUnit === 'dollar' && toUnit === 'pound') {
+    result = (inputCurr *0.80);
+  } else if (fromUnit === 'dollar' && toUnit === 'taka') {
+    result = (inputCurr *109.86);
+  } else if (fromUnit === 'taka' && toUnit === 'dollar') {
+    result = (inputCurr *0.0091);
+  } else if (fromUnit === 'pound' && toUnit === 'taka') {
+    result = (inputCurr *138.03);
+  } else if (fromUnit === 'taka' && toUnit === 'pound') {
+    result = (inputCurr *0.0072);
+  } else if (fromUnit === 'INR' && toUnit === 'taka') {
+    result = (inputCurr *1.33);
+  } else if (fromUnit === 'taka' && toUnit === 'INR') {
+    result = (inputCurr *0.75);
+  } else if (fromUnit === 'INR' && toUnit === 'yen') {
+    result = (inputCurr *1.77);
+  } else if (fromUnit === 'yen' && toUnit === 'INR') {
+    result = (inputCurr *0.57);
+  } else if (fromUnit === 'yen' && toUnit === 'pound') {
+    result = (inputCurr *0.0054);
+  } else if (fromUnit === 'pound' && toUnit === 'yen') {
+    result = (inputCurr *183.58);
+  } else if (fromUnit === 'dollar' && toUnit === 'yen') {
+    result = (inputCurr *146.12);
+  } else if (fromUnit === 'yen' && toUnit === 'dollar') {
+    result = (inputCurr *0.0068);
+  } else if (fromUnit === 'taka' && toUnit === 'yen') {
+    result = (inputCurr *1.33);
+  } else if (fromUnit === 'yen' && toUnit === 'taka') {
+    result = (inputCurr *0.75);
+  } else {
+    result = inputCurr;
+  }
+
+  document.getElementById('result').textContent  = ` ${result.toFixed(2)} `;
+}
+
+  </script>
+</body>
+</html>
